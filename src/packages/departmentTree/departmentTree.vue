@@ -19,8 +19,6 @@
   </div>
 </template>
 <script>
-// import 'element-ui/lib/theme-chalk/index.css';
-import { Tree, Input } from 'element-ui';
 import { debounce } from "../../utli/debounce";
 export default {
   name: "departmentTree",
@@ -31,10 +29,6 @@ export default {
       tree: this.data,
       isMounting: true
     };
-  },
-  components: {
-    Tree,
-    Input
   },
   props: {
     visible: {

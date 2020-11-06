@@ -1,6 +1,6 @@
 {
   "name": "departments-tree",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "vue",
   "main": "./dist/goodFuture.umd.js",
   "scripts": {
