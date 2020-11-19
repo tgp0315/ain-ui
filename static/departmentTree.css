@@ -1,0 +1,19 @@
+.objectTree-container {
+  padding: 60px 20px 20px 20px;
+  max-width: 50%;
+  min-width: 100%;
+}
+.objectTree-container /deep/ .el-tree {
+  height: calc(100vh - 250px);
+  overflow: auto;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s;
+  width: 30%;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  width: 0;
+}

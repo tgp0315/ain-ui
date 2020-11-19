@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import { debounce } from "../../utli/debounce";
+import { debounce } from "../../../utli/debounce";
 export default {
   name: "departmentTree",
   data() {
@@ -171,24 +171,5 @@ export default {
   }
 };
 </script>
-<style  scoped>
-.objectTree-container {
-  padding: 60px 20px 20px 20px;
-  max-width: 50%;
-  min-width: 100%;
-}
-.objectTree-container /deep/ .el-tree {
-  height: calc(100vh - 250px);
-  overflow: auto;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 1s;
-  width: 30%;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-  width: 0;
-}
-</style>
+<style src="../../../static/base.css"></style>
+<style src="../../../static/departmentTree.css" scoped></style>

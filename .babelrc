@@ -1,11 +1,10 @@
 {
   "presets": [["es2015", { "modules": false }]],
   "plugins": [
-    [
-      "component",
+    ["component", 
       {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
+         "libraryName": "farmlay-ui",
+         "styleLibraryName": "~node_modules/bes-ui/static"
       }
     ]
   ]
