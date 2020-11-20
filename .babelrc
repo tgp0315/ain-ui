@@ -1,10 +1,9 @@
 {
-  "presets": [["es2015", { "modules": false }]],
   "plugins": [
     ["component", 
       {
          "libraryName": "farmlay-ui",
-         "styleLibraryName": "~node_modules/bes-ui/static"
+         "styleLibraryName": "~node_modules/farmlay-ui/static"
       }
     ]
   ]
