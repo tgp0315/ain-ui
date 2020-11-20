@@ -12,7 +12,8 @@ module.exports = {
           'experimentalObjectRestSpread': true,
           'jsx': true,
           'modules': true,
-      }
+      },
+      parser: 'babel-eslint'
   },
   // 这些环境并不是互斥的，所以你可以同时定义多个
   'env': {
@@ -294,7 +295,7 @@ module.exports = {
       'no-confusing-arrow': [2, { 'allowParens': true }],
 
       // 禁止使用 console，提醒开发者，上线时要去掉
-      'no-console': 1,
+      'no-console': 'off',
 
       // 禁止使用常量作为判断条件
       'no-constant-condition': [2, { 'checkLoops': false }],
@@ -310,7 +311,7 @@ module.exports = {
       'no-control-regex': 2,
 
       // 禁止 debugger 语句，提醒开发者，上线时要去掉
-      'no-debugger': 1,
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 
       // 禁止对变量使用 delete 关键字，删除对象的属性不受限制
       'no-delete-var': 2,
