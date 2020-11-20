@@ -19,16 +19,16 @@
   </div>
 </template>
 <script>
-import { debounce } from "../../../utli/debounce";
+import { debounce } from '../../../util/debounce'
 export default {
-  name: "departmentTree",
-  data() {
+  name: 'DepartmentTree',
+  data () {
     return {
-      defaultProps: { children: "children"},
-      filterText: "",
+      defaultProps: { children: 'children' },
+      filterText: '',
       tree: this.data,
       isMounting: true
-    };
+    }
   },
   props: {
     visible: {
@@ -57,119 +57,120 @@ export default {
     }
   },
   computed: {
-    checkedKeys() {
-      return this.checkedNodes.map(({ department_id }) => department_id);
+    checkedKeys () {
+      // eslint-disable-next-line camelcase
+      return this.checkedNodes.map(({ department_id }) => department_id)
     },
-    treeOps() {
-      return this.tree || this.data;
+    treeOps () {
+      return this.tree || this.data
     }
   },
   watch: {
-    filterText(val) {
-      this.$refs.tree.filter(val);
+    filterText (val) {
+      this.$refs.tree.filter(val)
     },
-    data(v) {
-      this.tree = v;
+    data (v) {
+      this.tree = v
     }
   },
   methods: {
     // test
-    filterNode(value, data) {
-      if (!value) return true;
-      return data.label.indexOf(value) !== -1;
+    filterNode (value, data) {
+      if (!value) return true
+      return data.label.indexOf(value) !== -1
     },
-    findRoot(id) {
-      let currentRoot = {};
+    findRoot (id) {
+      let currentRoot = {}
       for (let index = 0; index < this.data.length; index++) {
-        currentRoot = this.data[index];
+        currentRoot = this.data[index]
         if (this.findNode(id, this.data[index])) {
-          return currentRoot;
+          return currentRoot
         }
       }
     },
-    findNode(id, node) {
-      if (node.id == id) {
-        return true;
+    findNode (id, node) {
+      if (node.id === id) {
+        return true
       }
-      const children = node.children;
+      const children = node.children
       if (children && children.length > 0) {
         for (let index = 0; index < children.length; index++) {
           if (this.findNode(id, children[index])) {
-            return true;
+            return true
           }
         }
       }
-      return false;
+      return false
     },
-    treeChange: debounce(function(data, checked, indeterminate) {
-      const nodes = this.$refs.tree.getCheckedNodes(this.leafOnly);
+    treeChange: debounce(function (data, checked, indeterminate) {
+      const nodes = this.$refs.tree.getCheckedNodes(this.leafOnly)
       if (this.exclusive) {
         if (checked) {
-          const rootID = this.findRoot(data.id).id;
-          this.disabledOtherBranch(rootID);
+          const rootID = this.findRoot(data.id).id
+          this.disabledOtherBranch(rootID)
         }
 
-        if (nodes.length == 0) {
-          this.enableAll();
+        if (nodes.length === 0) {
+          this.enableAll()
         }
       }
       this.$emit(
-        "update:checkedNodes",
+        'update:checkedNodes',
         nodes.map(({ label, id }) => ({ name: label, department_id: id }))
-      );
+      )
     }, 500),
-    disabledOtherBranch(id) {
-      let tree = this.tree;
+    disabledOtherBranch (id) {
+      let tree = this.tree
       for (let index = 0; index < tree.length; index++) {
-        if (tree[index].id == id) {
-          continue;
+        if (tree[index].id === id) {
+          continue
         }
-        tree[index] = this.disableNode(tree[index], true);
-        this.$set(tree, index, { ...tree[index] });
+        tree[index] = this.disableNode(tree[index], true)
+        this.$set(tree, index, { ...tree[index] })
       }
     },
-    disableNode(node, disabled) {
-      node.disabled = disabled;
-      const children = node.children;
+    disableNode (node, disabled) {
+      node.disabled = disabled
+      const children = node.children
       if (children && children.length > 0) {
         node.children = children.map(c => {
-          return this.disableNode(c, disabled);
-        });
+          return this.disableNode(c, disabled)
+        })
       }
-      return node;
+      return node
     },
-    enableAll() {
-      let tree = this.tree;
+    enableAll () {
+      let tree = this.tree
       for (let index = 0; index < tree.length; index++) {
-        tree[index] = this.disableNode(tree[index], false);
-        this.$set(tree, index, { ...tree[index] });
+        tree[index] = this.disableNode(tree[index], false)
+        this.$set(tree, index, { ...tree[index] })
       }
     },
-    outside() {
+    outside () {
       if (!this.isMounting) {
-        this.$emit("update:visible", false);
+        this.$emit('update:visible', false)
       }
     }
   },
-  mounted() {
+  mounted () {
     if (this.visible) {
       if (this.appendToBody) {
-        document.body.appendChild(this.$el);
+        document.body.appendChild(this.$el)
       }
     }
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       setTimeout(() => {
-        this.isMounting = false;
-      }, 1000);
-    });
+        this.isMounting = false
+      }, 1000)
+    })
   },
-  destroyed() {
+  destroyed () {
     // if appendToBody is true, remove DOM node after destroy
     if (this.appendToBody && this.$el && this.$el.parentNode) {
-      this.$el.parentNode.removeChild(this.$el);
+      this.$el.parentNode.removeChild(this.$el)
     }
   }
-};
+}
 </script>
 <style src="../../../static/base.css"></style>
-<style src="../../../static/departmentTree.css" scoped></style>
+<style src="../../../static/departmenttree.css" scoped></style>

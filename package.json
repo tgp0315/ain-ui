@@ -33,11 +33,11 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^5.0.0"
+    "eslint-plugin-vue": "^5.0.0",
+    "element-ui": "^2.13.2"
   },
   "dependencies": {
-    "element-ui": "^2.13.2",
-    "farmlay-ui": "^1.0.5",
+    "farmlay-ui": "^1.1.1",
     "vue": "^2.6.12"
   },
   "files": [
