@@ -1,6 +1,6 @@
 {
   "name": "farmlay-ui",
-  "version": "1.0.2",
+  "version": "1.1.6",
   "description": "vue",
   "main": "./lib/index.js",
   "style": "./package/index.css",
@@ -37,7 +37,7 @@
     "element-ui": "^2.13.2"
   },
   "dependencies": {
-    "farmlay-ui": "^1.1.1",
+    "farmlay-ui": "^1.1.6",
     "vue": "^2.6.12"
   },
   "files": [

@@ -59,59 +59,59 @@ export default {
   computed: {
     checkedKeys () {
       // eslint-disable-next-line camelcase
-      return this.checkedNodes.map(({ department_id }) => department_id)
+      return this.checkedNodes.map(({ department_id }) => department_id);
     },
     treeOps () {
-      return this.tree || this.data
+      return this.tree || this.data;
     }
   },
   watch: {
     filterText (val) {
-      this.$refs.tree.filter(val)
+      this.$refs.tree.filter(val);
     },
     data (v) {
-      this.tree = v
+      this.tree = v;
     }
   },
   methods: {
     // test
     filterNode (value, data) {
-      if (!value) return true
-      return data.label.indexOf(value) !== -1
+      if (!value) return true;
+      return data.label.indexOf(value) !== -1;
     },
     findRoot (id) {
-      let currentRoot = {}
+      let currentRoot = {};
       for (let index = 0; index < this.data.length; index++) {
         currentRoot = this.data[index]
         if (this.findNode(id, this.data[index])) {
-          return currentRoot
+          return currentRoot;
         }
       }
     },
     findNode (id, node) {
       if (node.id === id) {
-        return true
+        return true;
       }
       const children = node.children
       if (children && children.length > 0) {
         for (let index = 0; index < children.length; index++) {
           if (this.findNode(id, children[index])) {
-            return true
+            return true;
           }
         }
       }
-      return false
+      return false;
     },
     treeChange: debounce(function (data, checked, indeterminate) {
-      const nodes = this.$refs.tree.getCheckedNodes(this.leafOnly)
+      const nodes = this.$refs.tree.getCheckedNodes(this.leafOnly);
       if (this.exclusive) {
         if (checked) {
-          const rootID = this.findRoot(data.id).id
-          this.disabledOtherBranch(rootID)
+          const rootID = this.findRoot(data.id).id;
+          this.disabledOtherBranch(rootID);
         }
 
         if (nodes.length === 0) {
-          this.enableAll()
+          this.enableAll();
         }
       }
       this.$emit(
@@ -120,57 +120,57 @@ export default {
       )
     }, 500),
     disabledOtherBranch (id) {
-      let tree = this.tree
+      let tree = this.tree;
       for (let index = 0; index < tree.length; index++) {
         if (tree[index].id === id) {
           continue
         }
-        tree[index] = this.disableNode(tree[index], true)
-        this.$set(tree, index, { ...tree[index] })
+        tree[index] = this.disableNode(tree[index], true);
+        this.$set(tree, index, { ...tree[index] });
       }
     },
     disableNode (node, disabled) {
-      node.disabled = disabled
-      const children = node.children
+      node.disabled = disabled;
+      const children = node.children;
       if (children && children.length > 0) {
         node.children = children.map(c => {
-          return this.disableNode(c, disabled)
+          return this.disableNode(c, disabled);
         })
       }
-      return node
+      return node;
     },
     enableAll () {
       let tree = this.tree
       for (let index = 0; index < tree.length; index++) {
-        tree[index] = this.disableNode(tree[index], false)
-        this.$set(tree, index, { ...tree[index] })
+        tree[index] = this.disableNode(tree[index], false);
+        this.$set(tree, index, { ...tree[index] });
       }
     },
     outside () {
       if (!this.isMounting) {
-        this.$emit('update:visible', false)
+        this.$emit('update:visible', false);
       }
     }
   },
   mounted () {
     if (this.visible) {
       if (this.appendToBody) {
-        document.body.appendChild(this.$el)
+        document.body.appendChild(this.$el);
       }
     }
     this.$nextTick(function () {
       setTimeout(() => {
-        this.isMounting = false
+        this.isMounting = false;
       }, 1000)
     })
   },
   destroyed () {
     // if appendToBody is true, remove DOM node after destroy
     if (this.appendToBody && this.$el && this.$el.parentNode) {
-      this.$el.parentNode.removeChild(this.$el)
+      this.$el.parentNode.removeChild(this.$el);
     }
   }
 }
 </script>
 <style src="../../../static/base.css"></style>
-<style src="../../../static/departmenttree.css" scoped></style>
+<style src="../../../static/department-tree.css" scoped></style>

@@ -1,7 +1,7 @@
 // .eslintrc.js
 module.exports = {
   // 解析ES6
-  'parser': 'babel-eslint',
+  'parser': 'vue-eslint-parser',
   'parserOptions': {
       // 启用ES8语法支持
       'ecmaVersion': 2017,    
@@ -12,8 +12,7 @@ module.exports = {
           'experimentalObjectRestSpread': true,
           'jsx': true,
           'modules': true,
-      },
-      parser: 'babel-eslint'
+      }
   },
   // 这些环境并不是互斥的，所以你可以同时定义多个
   'env': {

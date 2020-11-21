@@ -6,16 +6,15 @@
 ```
 npm install -S farmlay-ui
 ```
-### html文件中
+### 使用方式 
 ```
+1.html文件中
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://unpkg.com/farmlay-ui/package/index.css">
 <!-- 引入脚本 -->
 <script src="https://unpkg.com/farmlay-ui/package/index.umd.min.js"></script>
 ```
-
-### 使用方式
-
+2.
 // 统一加载
 import FarmlayUI from 'farmlay-ui'
 Vue.use(FarmlayUI)

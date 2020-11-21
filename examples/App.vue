@@ -1,12 +1,12 @@
 <template>
   <div>
-    <departmenttree
+    <department-tree
       v-if="visible"
       key="departmentTree"
       :checkedNodes.sync="selectedArr"
       :visible.sync="visible"
       :data="data"
-    ></departmenttree>
+    ></department-tree>
   </div>
 </template>
 <script>
