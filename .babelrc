@@ -2,8 +2,8 @@
   "plugins": [
     ["component", 
       {
-         "libraryName": "farmlay-ui",
-         "styleLibraryName": "~node_modules/farmlay-ui/static"
+        "libraryName": "farmlay-ui",
+        "styleLibraryName": "~node_modules/farmlay-ui/static"
       }
     ]
   ]

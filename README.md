@@ -20,14 +20,14 @@ import FarmlayUI from 'farmlay-ui'
 Vue.use(FarmlayUI)
 
 // departmentTree
-import { DepartmentTree } from 'farmlay-ui'
-Vue.use(DepartmentTree)
+import { departmentTree } from 'farmlay-ui'
+Vue.use(departmentTree)
 
 ### Example
 ```
 在main.js中 
-import { DepartmentTree } from 'farmlay-ui'
-Vue.use(DepartmentTree)
+import { departmentTree } from 'farmlay-ui'
+Vue.use(departmentTree)
 
 在需要的组件中
 <department-tree
